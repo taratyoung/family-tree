@@ -7,6 +7,16 @@ const sequelize = new Sequelize('family-tree', 'postgres', 'password', {
     dialect: 'postgres'
 });
 
+const Person = sequelize.import('./models/person.js')
+const Relationship = sequelize.import('./models/relationship.js')
+
+// Person.hasOne(Person, { as: 'Mother' })
+// Person.hasOne(Person, { as: 'Father' })
+Person.belongsToMany(Person, { as: 'children', through: 'offspring' })
+
+Person.belongsToMany(Relationship, { through: 'relationshipMember' })
+Relationship.belongsToMany(Person, { through: 'relationshipMember' })
+
 //verify to test if connection is ok
 sequelize.authenticate()
     .then(

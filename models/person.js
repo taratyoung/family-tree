@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Family = sequelize.define('family', {
+    const Person = sequelize.define('person', {
         firstName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -27,30 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         birthplace: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        mother: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        father: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        spouse: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        // gender: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // },
-        child: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        owner: {
-            type: DataTypes.INTEGER
         }
     })
-    return Family;
+    return Person;
 };
